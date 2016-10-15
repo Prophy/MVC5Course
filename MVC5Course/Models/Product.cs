@@ -20,7 +20,7 @@ namespace MVC5Course.Models
         {
             this.OrderLine = new HashSet<OrderLine>();
         }
-    
+
         public int ProductId { get; set; }
         [Required]
         public string ProductName { get; set; }
