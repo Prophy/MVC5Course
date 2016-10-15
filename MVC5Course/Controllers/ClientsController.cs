@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MVC5Course.Models;
+using MVC5Course.Models.ViewModels;
 
 namespace MVC5Course.Controllers
 {
@@ -15,10 +16,26 @@ namespace MVC5Course.Controllers
         private FabricsEntities db = new FabricsEntities();
 
         // GET: Clients
-        public ActionResult Index()
+        public ActionResult Index(string queryStr)
         {
             var client = db.Client.Include(c => c.Occupation);
+
+            if (!string.IsNullOrEmpty(queryStr)) {
+                client = client.Where(x => x.FirstName.Contains(queryStr));
+            }
+
             return View(client.ToList().OrderBy(x=> x.ClientId).Take(20));
+        }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(ClientViewModel client)
+        {
+            return View("LoginResult", client);
         }
 
         // GET: Clients/Details/5
@@ -40,7 +57,13 @@ namespace MVC5Course.Controllers
         public ActionResult Create()
         {
             ViewBag.OccupationId = new SelectList(db.Occupation, "OccupationId", "OccupationName");
-            return View();
+
+            var client = new Client {
+                Gender = "M"
+            };
+
+
+            return View(client);
         }
 
         // POST: Clients/Create

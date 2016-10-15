@@ -9,6 +9,10 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+<form action="@Url.Action("Index", "Clients")">
+    <input type="text" value="" name="queryStr"/>
+    <input type="submit" value="Search"/>
+</form>
 <table class="table">
     <tr>
         <th>
@@ -59,11 +63,13 @@
             @Html.DisplayFor(modelItem => item.XCode)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ClientId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ClientId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ClientId })
+            @Html.ActionLink("Edit", "Edit", new { id = item.ClientId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ClientId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ClientId })
         </td>
     </tr>
 }
 
 </table>
+
+@Html.Action("Create")
