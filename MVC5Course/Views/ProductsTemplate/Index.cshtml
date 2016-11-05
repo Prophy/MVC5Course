@@ -1,7 +1,13 @@
-﻿@model IEnumerable<MVC5Course.Models.Product>
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IEnumerable<MVC5Course.Models.Product>
 
 @{
     ViewBag.Title = "Index";
+    if (IsAjax)
+    {
+        Layout = "";
+    }
 }
 
 <h2>Index</h2>
@@ -61,3 +67,10 @@
 }
 
 </table>
+
+@section scripts{
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+}
+
+@Html.PagedListPager(Model as IPagedList, (p) => Url.Action("Index", new { pageNo = p }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing("#main"))
