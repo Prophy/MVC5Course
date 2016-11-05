@@ -15,6 +15,7 @@ namespace MVC5Course.Controllers
         private FabricsEntities db = new FabricsEntities();
 
         // GET: Products1
+        [HelloFilter]
         public ActionResult Index()
         {
             return View(db.Product.OrderBy(x=> x.ProductId).Take(10).ToList());

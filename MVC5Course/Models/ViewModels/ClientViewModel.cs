@@ -18,6 +18,7 @@ namespace MVC5Course.Models.ViewModels
         [StringLength(10, ErrorMessage = "{0}字太長嘍, 長度不要超過{1}字元")]
         [DisplayName("中間名")]
         [DisplayFormat(NullDisplayText = "白癡")]
+        [DataType(DataType.Password)]
         public string MiddleName { get; set; }
 
         [DisplayName("姓")]

@@ -10,7 +10,9 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 <form action="@Url.Action("Index", "Clients")">
-    <input type="text" value="" name="queryStr"/>
+    @*<input type="text" value="" name="queryStr"/>*@
+    @Html.TextBox("search")
+    @Html.DropDownList("Gender")
     <input type="submit" value="Search"/>
 </form>
 <table class="table">
@@ -68,8 +70,14 @@
             @Html.ActionLink("Delete", "Delete", new { id = item.ClientId })
         </td>
     </tr>
+
+   
 }
+
+
 
 </table>
 
 @Html.Action("Create")
+
+

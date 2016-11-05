@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@using MVC5Course.Models.ViewModels
+@{
+    var c = TempData["model"] as ClientViewModel;
+
+}
+
+<h2>Index</h2>
+<div> @c.FirstName  @c.LastName</div>
+
+
+

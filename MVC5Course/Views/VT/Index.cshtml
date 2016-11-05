@@ -1,0 +1,21 @@
+﻿
+@{
+    var data = new int[] { 1, 2, 3, 4, 5 };
+    var empty = " ";
+}
+
+@foreach (var item in data)
+{
+    @(item + empty)
+}
+
+
+<ul>
+    @foreach (var item in data)
+    {
+     <li>@item</li>
+    }
+</ul>
+
+
+
